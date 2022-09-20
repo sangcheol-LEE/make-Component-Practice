@@ -38,7 +38,6 @@ const Content = styled.span`
 
 const Skeleton = ({
         animation = true,
-        children,
         width,
         height,
         circle,
@@ -51,9 +50,16 @@ const Skeleton = ({
   // 만약 count가 4면 "----"를 리턴한다.
   const content = useMemo(() => [...Array({length:count})].map(() => "-").join(""),[count])
   return (
-    <Base color='red' width="200px" height="200px">
-      <Content >
-      </Content>
+    <Base
+        rounded={rounded}
+        circle={circle}
+        width={width}
+        height={height}
+        animation={animation}
+        unit={unit}
+        color={color}
+      >
+      <Content>{content}</Content>
     </Base>
   );
 };
