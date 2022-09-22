@@ -55,7 +55,7 @@ const Placeholder = () => {
       </ImageWrapper>
       <Info>
         <Skeleton width={150} height={29} rounded/>
-        <div style={{height: "8px"}}/>
+          <div style={{height: "8px"}}/>
         <Skeleton width={200} height={19} rounded/>
 
       </Info>
