@@ -7,7 +7,7 @@ const pulseKeyframes = keyframes`
     opacity : 1;
   }
   50% {
-    opacity: 0.3;
+    opacity: 0.2;
   }
   100% {
     opacity : 1;
@@ -24,12 +24,11 @@ const Base = styled.span`
           ${({animation}) => animation && pulseAnimation}
           ${({width, unit}) => (width && unit) && `width : ${width}${unit}`}
           ${({height, unit}) => (height && unit) && `height : ${height}${unit}`}
-          `;
+        `;
 
 const Content = styled.span`
   opacity: 0;
 `;
-
 
 
 const Skeleton = ({

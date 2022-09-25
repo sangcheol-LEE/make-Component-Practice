@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import styled from 'styled-components';
-import Skeleton from './components/Skeleton';
-import dummy from "./image/Java Script.png"
+import Skeleton from '../components/Skeleton';
+import dummy from "../image/Java Script.png";
 
 const Base = styled.div`
   display: grid;
