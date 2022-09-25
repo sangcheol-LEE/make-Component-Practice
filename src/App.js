@@ -16,6 +16,7 @@ const Container = styled.div`
   flex-direction: column;
   box-shadow : rgb(0 0 0 / 4%) 0px 4px 16px 0px;
   border-radius: 4px;
+
 `;
 
 const ImageWrapper = styled.div`
@@ -47,21 +48,20 @@ const Description = styled.p`
   font-size: 16px;
 `;
 
-const Placeholder = () => {
-  return (
+const Placeholder = () => (
     <Container>
       <ImageWrapper>
         <Skeleton width={320} height={220}/>
       </ImageWrapper>
       <Info>
-        <Skeleton width={150} height={29} rounded/>
+        <Skeleton width={150} height={29} rounded />
           <div style={{height: "8px"}}/>
-        <Skeleton width={200} height={19} rounded/>
-
+        <Skeleton width={200} height={19} rounded />
       </Info>
     </Container>
   )
-}
+
+
 const Item = () => {
   return (
     <Container>
@@ -77,7 +77,7 @@ const Item = () => {
 }
 
 const App = () => {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
@@ -88,12 +88,9 @@ const App = () => {
   return (
     <Base>
     {
-      loading 
-      ? Array.from({length: 25}).map((_, idx) => (
-          <Placeholder key={idx}/>
-        ))
-      :
-        Array.from({length: 25}).map((_, idx) => (
+      loading ? Array.from({length: 25}).map((item, idx) => (
+          <Placeholder key={idx} />
+        )) : Array.from({length: 25}).map((item, idx) => (
           <Item key={idx}/>
         ))
     }

@@ -7,39 +7,30 @@ const pulseKeyframes = keyframes`
     opacity : 1;
   }
   50% {
-    opacity: 0.4;
+    opacity: 0.3;
   }
   100% {
     opacity : 1;
   }
 `;
-
-const pulseAnimation = styled.div`
-  ${(props) => 
-      props && css`
-        animation: ${pulseKeyframes} 1.5s ease-in-out infinite; 
-      `
-    }
+const pulseAnimation = css`
+  animation: ${pulseKeyframes} 1.5s ease-in-out infinite;
 `;
-
-
-
 const Base = styled.span`
-  ${(props) =>
-    props &&
-      css`
-          background-color: ${props.color};
-          border-radius : ${(props) => props.rounded ? "8px" : (props.circle ? "50%" : null)};
-          display: ${(props) => (props.width || props.height) && "block"};
-          width: ${(props) => props.width && props.unit && `${props.width}${props.unit}`};
-          height: ${(props) => props.height && props.unit && `${props.height}${props.unit}`};
-          animation : ${(props) => props.animation && `${pulseAnimation}`}
-        `}
-`;
+          ${({color}) => color && `background-color: ${color}`};
+          ${({rounded}) => rounded && `border-radius : 8px`};
+          ${({circle}) => circle && 'border-raidus : 50%'};
+          ${({width, height}) => (width || height) && `display : block`};
+          ${({animation}) => animation && pulseAnimation}
+          ${({width, unit}) => (width && unit) && `width : ${width}${unit}`}
+          ${({height, unit}) => (height && unit) && `height : ${height}${unit}`}
+          `;
 
 const Content = styled.span`
   opacity: 0;
 `;
+
+
 
 const Skeleton = ({
         animation = true,
@@ -49,11 +40,12 @@ const Skeleton = ({
         rounded,
         count,
         unit = "px",
-        color = "$F4F4F4",
+        color = "#F4F4F4",
     }) => {
 
   // 만약 count가 4면 "----"를 리턴한다.
   const content = useMemo(() => [...Array({length:count})].map(() => "-").join(""),[count])
+
   return (
     <Base
         rounded={rounded}
